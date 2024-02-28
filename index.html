@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midea</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="from">
+          <form  method="POST" name="google-sheet">
+           <div class="box1">
+       
+                <input type="text" name="name" placeholder=" Enter Name" required="">
+           </div>
+        
+      <div class="box2">
+     
+            <input type="date" name="date" placeholder="Enter Date" >
+      </div>
+    
+      <div class="box3">
+       
+            <input type="message" name="message" placeholder="Enter Message" >
+      </div>
+    
+      <div class="submit">
+        
+      <button type="submit">Send</button>
+      <button type="reset" class="reset">reset</button>
+  
+      </div>
+    </form>
+        </div>
+    </div>
+    
+    
+
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxeMa6cXhIlweZmEfFQwOOfLm9imsguMzOKNYolWh0acEgOhfmDmZx7aa95uBa4SCMrHQ/exec'
+        const form = document.forms['google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Thanks for Contacting us..! We Will Contact You  Very Soon..."))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
